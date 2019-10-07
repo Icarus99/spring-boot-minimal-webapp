@@ -36,6 +36,9 @@ public class HelloControllerIT {
     public void getHello() throws Exception {
         ResponseEntity<String> response = template.getForEntity(base.toString(),
                 String.class);
-        assertThat(response.getBody(), equalTo("Greetings from Spring Boot!"));
+        String html = "<h1>Hello World!</h1>\n" +
+            "<p>This web app is powered by \n" +
+            "<a href='https://github.com/Icarus99/spring-boot-minimal-webapp'>this github repo</a></p>\n";
+        assertThat(response.getBody(), equalTo(html));
     }
 }
